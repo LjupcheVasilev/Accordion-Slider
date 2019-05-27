@@ -1,0 +1,53 @@
+.slider_container {
+    float: left;
+    width: 100%;
+}
+
+.as_image_container {
+    width: 33%;
+    float: left;
+    overflow: hidden;
+    border-right: 1px solid #001d30;
+    border-left: 1px solid #001d30;
+    position: relative;
+    box-shadow: 0 0 10px 0 #000;
+    border-right: 1px solid #001d30;
+    border-left: 1px solid #001d30;
+    transition: all 0.2s ease-out;
+}
+
+.as_image_container img {
+    max-width: 500px;
+    filter: brightness(80%);
+}
+
+.as_image_container a {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 0;
+    width: 100%;
+}
+
+.as_caption {
+    position:absolute;
+    top:40%;
+    width:100%;
+    background: rgba(0,0,0,0.1);
+    color: white;
+    text-transform: uppercase;
+    padding: 30px 40% 30px 70px;
+    overflow:hidden;
+    height: 180px;
+    white-space: nowrap;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px black;
+}
+
+@media screen and (max-width: 768px) {
+    .as_image_container {
+        width: 100% !important;
+        position: relative !important;
+        float: left !important;
+    }
+}

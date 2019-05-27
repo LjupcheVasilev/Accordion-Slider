@@ -1,0 +1,40 @@
+.row {
+    margin: 10px 0;
+}
+
+.display_images {
+    border: 1px solid black;
+    background: rgb(240,240,240);
+    height: 350px;
+    width: 500px;
+}
+
+.display_images .glyphicon-remove {
+    position: absolute;
+    right: 33px;
+    top: 2px;
+    cursor: pointer;
+    padding: 3px 3px 3px 4px;
+}
+
+.display_images .glyphicon-remove:hover {
+    border-radius: 10px;
+    background: #a94442;
+}
+
+input:disabled {
+    background: rgb(240,240,240);
+    color: black;
+}
+
+#tableSliders {
+    display: none;
+}
+
+#tableSliders table {
+    table-layout: fixed;
+}
+
+#tableSliders table a:hover, #tableSliders table a:visited, #tableSliders table a:focus {
+    text-decoration: none;
+}
