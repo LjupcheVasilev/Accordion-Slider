@@ -32,6 +32,8 @@ class AS_Admin {
      * @since 1.0.0
      */
     function hooks() {
+
+        // Add action to the admin menu which will attach the plugin's menu page
         add_action('admin_menu', array( $this, 'accordion_slider' ) );
     }
 
@@ -103,65 +105,6 @@ class AS_Admin {
             </div>
             <?php
         }
-    }
-
-    /**
-     * A function that get's called when the user clicks on the submenu page Add new slider
-     *
-     * @since 1.0.0
-     */
-    function as_add_slider() {
-//        global $wpdb;
-//        $query_last_slider = $wpdb->prepare("SELECT slider_id FROM " . $wpdb->prefix . "as_slider ORDER BY id DESC LIMIT 1;", array());
-//        $last_slider_id = $wpdb->get_var($query_last_slider);
-//
-//        $last_slider_id = $last_slider_id ? $last_slider_id : 0;
-//        if ($_POST) {
-//
-//
-//        }
-//        else {
-//            ?>
-<!--            <div class="wrap">-->
-<!--                <h1>Accordion Slider</h1>-->
-<!--                <form method="post" action="?page=as_add_slider">-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-md-2">-->
-<!--                            <label>Slider name:</label>-->
-<!--                        </div>-->
-<!--                        <div class="col-md-5">-->
-<!--                            <input type="text" class="regular-text" value="Slider --><?php //echo $last_slider_id + 1; ?><!--" name="slider_name">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-md-6">-->
-<!--                            <div id="display_imgs" class="display_images" >-->
-<!--                                <div class="row" v-if="images.length>0">-->
-<!--                                    <input type="text" name="list_length" :value="images.length" hidden>-->
-<!--                                    <div v-for="(item, key) in images" class="col-md-4">-->
-<!--                                        <input type="text" :value="item.image_url" v-bind:name="'item_' + key" hidden>-->
-<!--                                        <input type="text" :value="item.image_name" v-bind:name="'name_' + key" hidden>-->
-<!--                                        <img :src="item.image_url" :alt="item.caption" class="col-md-12"/>-->
-<!--                                        <span class="col-md-12">{{item.image_name}}</span>-->
-<!--                                        <span class='glyphicon glyphicon-remove' v-on:click="remove(item)"></span>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <div class="row">-->
-<!--                        <div class="col-md-5">-->
-<!--                            <input type="button" class="chooseImage" value="Add Image"/>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--<!--                    <input type="text" name="submited" hidden value="true">-->-->
-<!--                    <input type="submit" v-on:click="add()" value="Submit" class="btn btn-primary">-->
-<!---->
-<!--                </form>-->
-<!--            </div>-->
-<!--            --><?php
-//        }
-
     }
 
     /**

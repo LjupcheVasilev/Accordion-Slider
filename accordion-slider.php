@@ -25,12 +25,14 @@ define( 'AS_ROOT_URL',    plugin_dir_url( __FILE__ ) );
 
 
 if( ! class_exists( 'Accordion_Slider' ) ) :
+
     /**
      * The main class.
      *
      * @since 1.0.0
      */
     class Accordion_Slider {
+
         /**
          * Plugin version.
          *
@@ -139,14 +141,18 @@ if( ! class_exists( 'Accordion_Slider' ) ) :
          * @since 1.0.0
          */
         public function admin_scripts($hook) {
+            // Check if we're in the admin dashboard
             if ( is_admin() && ( $hook == 'toplevel_page_accordion-slider' || $hook == 'accordion-slider-settings_page_as_add_slider' ) ) {
+                // Enqueue admin style
                 wp_register_style('as_style', AS_ROOT_URL . '/css/admin_style.css');
                 wp_enqueue_style('as_style');
 
+                // Enqueue bootstrap
                 wp_register_style('bootstrap', AS_ROOT_URL . '/css/bootstrap.css');
                 wp_enqueue_style('bootstrap');
-                wp_enqueue_script('jquery');
 
+                // Enqueue jquery, bootstrap, vue and admin scripts
+                wp_enqueue_script('jquery');
                 wp_enqueue_script('bootstrap', AS_ROOT_URL . 'js/bootstrap.js', array('jquery'));
                 wp_enqueue_script('vue', AS_ROOT_URL . 'js/vue.js', array('jquery'));
                 wp_enqueue_script('admin_script', AS_ROOT_URL . 'js/admin_script.js', array('bootstrap'));
@@ -155,9 +161,12 @@ if( ! class_exists( 'Accordion_Slider' ) ) :
 //                wp_enqueue_script('jquery-ui-resizable');
 //                wp_enqueue_script('jquery-ui-draggable');
 
+                // Localize a JS script to use in the admin_script
                 wp_localize_script('admin_script', 'ACObject', array(
                     'home_url'  => home_url()
                 ));
+
+                // Enqueue the media object
                 wp_enqueue_media();
             }
         }
@@ -168,14 +177,16 @@ if( ! class_exists( 'Accordion_Slider' ) ) :
          * @since 1.0.0
          */
         public function front_end_scripts() {
+            // Enqueue the front-end style for the plugin
             wp_enqueue_style('as_style', AS_ROOT_URL . 'css/front_end_style.css', array());
 
+            // Enqueue jquery, bootstrap, vue and front-end script for the plugin
             wp_enqueue_script( 'jquery');
-
             wp_enqueue_script('bootstrap', AS_ROOT_URL . 'js/bootstrap.js', array('jquery'));
             wp_enqueue_script('vue', AS_ROOT_URL . 'js/vue.js', array('jquery'));
-
             wp_enqueue_script('as_script', AS_ROOT_URL . 'js/front_end_script.js', array('vue'), '', true);
+
+            // Localize a JS object to use in the front-end
             wp_localize_script('as_script', 'ACObject', array(
                 'home_url'  => home_url()
             ));
@@ -191,10 +202,12 @@ if( ! class_exists( 'Accordion_Slider' ) ) :
         public static function activate() {
             self::settings();
 
+            // Initialize the table name and charset_collate
             global $wpdb;
             $charset_collate = $wpdb->get_charset_collate();
             $table_name_slider = $wpdb->prefix . 'as_slider';
 
+            // SQL query for creating a table
             $sql = "CREATE TABLE $table_name_slider (
                 id mediumint(9) NOT NULL AUTO_INCREMENT,
                 name varchar(50) NOT NULL,
@@ -204,7 +217,10 @@ if( ! class_exists( 'Accordion_Slider' ) ) :
                 UNIQUE KEY id (id)
             ) $charset_collate;";
 
+            // Require the upgrade.php which has a function to run the SQL query
             require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+
+            // Run the SQL query and create the table
             dbDelta( $sql );
         }
 

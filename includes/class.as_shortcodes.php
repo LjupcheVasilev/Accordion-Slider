@@ -46,14 +46,13 @@ class AS_Shortcodes {
 
     function shortcode_handler($atts) {
         return "<div class='row slider_container' slider='" . $atts['slider_id'] . "'  >" .
-            "<div class='as_image_container' v-bind:style=\"{ background: 'url(' + image.image_url + ')'}\" v-for='image of images' v-if='images.length > 0'>" .
-            "<a href='#'>" .
-            "<p class='as_caption'>{{image.image_name}}</p>" .
-            "</a>" .
-            "</div>" .
+                "<div class='as_image_container' v-bind:style=\"{ background: 'url(' + image.image_url + ')'}\" v-for='image of images' v-if='images.length > 0'>" .
+                    "<a href='#'>" .
+                        "<p class='as_caption'>{{image.image_name}}</p>" .
+                    "</a>" .
+                "</div>" .
             "</div>";
 
-//        <img :src="image.image_url" alt="" class="as_image"/>
     }
 
 }
